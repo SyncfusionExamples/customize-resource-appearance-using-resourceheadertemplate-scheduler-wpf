@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfScheduler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:WpfScheduler"
+        xmlns:skinmanager ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        skinmanager:SfSkinManager.VisualStyle="MaterialLight"
+        WindowStartupLocation="CenterScreen" Height="600" Width="950"  >
+    <Window.DataContext>
+        <local:SchedulerViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate  x:Key="DayViewResourceTemplate">
+            <Grid Background="Transparent">
+                <Border BorderThickness="0.3,0.3,0,0.3" BorderBrush="Gray" >
+                    <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                        <Border CornerRadius="36" Height="72" Width="72" BorderThickness="4" BorderBrush="{Binding BackgroundBrush}">
+                            <Border CornerRadius="36" Height="64" Width="64" BorderThickness="4" BorderBrush="White">
+                                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="55"
+                                Height="55"  Source="{Binding ImageSource}"/>
+                            </Border>
+                        </Border>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"
+                        Foreground="Black" Text="{Binding Name}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <syncfusion:SfScheduler x:Name="Schedule"
+                            ViewType="Timeline"
+                            ResourceGroupType="Resource"
+                            ResourceCollection="{Binding Resources}"
+                            ResourceHeaderTemplate="{StaticResource DayViewResourceTemplate}"
+                            ItemsSource="{Binding Events}" HeaderHeight="32">
+            <syncfusion:SfScheduler.ResourceMapping>
+                <syncfusion:ResourceMapping Id="Id" Name="Name" Background="BackgroundBrush" Foreground="ForegroundBrush"/>
+            </syncfusion:SfScheduler.ResourceMapping>
+            <syncfusion:SfScheduler.TimelineViewSettings>
+                <syncfusion:TimelineViewSettings ResourceHeaderSize="100"/>
+            </syncfusion:SfScheduler.TimelineViewSettings>
+        </syncfusion:SfScheduler>
+    </Grid>
+</Window>
