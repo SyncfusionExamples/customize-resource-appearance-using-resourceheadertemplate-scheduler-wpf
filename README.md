@@ -1,2 +1,1 @@
-# customize-resource-appearance-using-resourceheadertemplate-scheduler-wpf
-How to customize the resource appearance using ResourceHeaderTemplate in WPF Schedule (SfScheduler)
+**[View document in Syncfusion WPF Knowledge base](https://www.syncfusion.com/kb/12103/how-to-customize-the-resource-appearance-using-resourceheadertemplate-in-wpf-schedule)**
